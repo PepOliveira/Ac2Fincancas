@@ -7,7 +7,9 @@ public class Gasto implements Serializable {
     private double valor;
     private String categoria;
     private String data;
-    public Gasto(String decricao, double valor, String categoria, String data) {
+
+
+    public Gasto(String descricao, double valor, String categoria, String data) {
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
