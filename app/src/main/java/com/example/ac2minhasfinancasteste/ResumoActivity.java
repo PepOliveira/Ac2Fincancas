@@ -18,17 +18,14 @@ public class ResumoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
-
         tvResumo = findViewById(R.id.tvResumo);
         tvProcessando = findViewById(R.id.tvProcessando);
         progressBar = findViewById(R.id.progressBar);
-
         ArrayList<Gasto> listaGastos = (ArrayList<Gasto>) getIntent().getSerializableExtra("listaGastos");
 
         new Thread(() -> {
             try {
-                Thread.sleep(2000); // Simula processamento pesado
-
+                Thread.sleep(2000);
                 Map<String, Double> totaisPorCategoria = new HashMap<>();
                 double totalGeral = 0;
                 String categoriaMaior = "";
@@ -50,15 +47,15 @@ public class ResumoActivity extends AppCompatActivity {
                 }
 
                 StringBuilder sb = new StringBuilder();
-                sb.append("Resumo por Categoria:\n");
+                sb.append("Resumo das Categorias:\n");
                 for (Map.Entry<String, Double> entry : totaisPorCategoria.entrySet()) {
                     sb.append(entry.getKey())
                             .append(": R$ ")
                             .append(String.format("%.2f", entry.getValue()))
                             .append("\n");
                 }
-                sb.append("\nTotal de Gastos Gerais: R$ ").append(String.format("%.2f", totalGeral));
-                sb.append("\nSua categoria com maior gasto: ").append(categoriaMaior);
+                sb.append("\nTotal de gastos salvos: R$ ").append(String.format("%.2f", totalGeral));
+                sb.append("\nA Categoria com mais gastos é: ").append(categoriaMaior);
 
                 runOnUiThread(() -> {
                     progressBar.setVisibility(ProgressBar.GONE);

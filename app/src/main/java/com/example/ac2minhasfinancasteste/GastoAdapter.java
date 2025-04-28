@@ -19,7 +19,6 @@ public class GastoAdapter extends ArrayAdapter<Gasto> {
         super(context, 0, gastos);
     }
 
-
     @SuppressLint("ViewHolder")
     @NonNull
     @Override
@@ -35,7 +34,7 @@ public class GastoAdapter extends ArrayAdapter<Gasto> {
         TextView tvCategoria = convertView.findViewById(R.id.tvCategoria);
         TextView tvData = convertView.findViewById(R.id.tvData);
 
-        tvDescricao.setText("Descrição: " + gasto.getDescricao());
+        tvDescricao.setText("Descrição do Gasto: " + gasto.getDescricao());
         tvValor.setText("Valor: R$ " + String.format("%.2f", gasto.getValor()));
         tvCategoria.setText("Categoria: " + gasto.getCategoria());
         tvData.setText("Data: " + gasto.getData());

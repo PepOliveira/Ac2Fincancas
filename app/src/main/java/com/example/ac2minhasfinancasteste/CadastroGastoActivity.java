@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class CadastroGastoActivity extends AppCompatActivity {
-
     private EditText etDescricao, etValor, etData;
     private Spinner spCategoria;
     private Button btnSalvar;
@@ -24,14 +23,10 @@ public class CadastroGastoActivity extends AppCompatActivity {
         etData = findViewById(R.id.etData);
         spCategoria = findViewById(R.id.spCategoria);
         btnSalvar = findViewById(R.id.btnSalvar);
-
-        // Preenchendo o spinner com categorias
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categorias_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spCategoria.setAdapter(adapter);
-
-        // DataPicker ao clicar no campo de data
         etData.setOnClickListener(v -> {
             Calendar c = Calendar.getInstance();
             int ano = c.get(Calendar.YEAR);
@@ -45,11 +40,7 @@ public class CadastroGastoActivity extends AppCompatActivity {
             dpd.show();
         });
 
-        btnSalvar.setOnClickListener(v -> {
-            String descricao = etDescricao.getText().toString();
-            String valorStr = etValor.getText().toString();
-            String categoria = spCategoria.getSelectedItem().toString();
-            String data = etData.getText().toString();
+        btnSalvar.setOnClickListener(v -> {String descricao = etDescricao.getText().toString();String valorStr = etValor.getText().toString();String categoria = spCategoria.getSelectedItem().toString();String data = etData.getText().toString();
 
             if (descricao.isEmpty() || valorStr.isEmpty() || data.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
